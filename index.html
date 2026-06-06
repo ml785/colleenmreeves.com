@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colleen Reeves</title>
+<meta property="og:title" content="Colleen Reeves">
+<meta property="og:description" content="Global Business Planning & Development — Fortune 500 Executive">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.colleenmreeves.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3a342b;
+    --sky:#5b9bd5;
+    --sky-deep:#2f6fb0;
+    --sky-soft:#9cc6e8;
+    --sand:#e9dcc3;
+    --sand-deep:#d8c4a0;
+    --tan:#c9a877;
+    --tan-deep:#a8854f;
+    --paper:#f7f0e3;
+    --paper-2:#efe3cf;
+    --cloud:#fffdf8;
+    --muted:#8a7d68;
+    --line:#e0d2b8;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Outfit',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif}
+  ::selection{background:var(--sky);color:#fff}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---- NAV ---- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 30px;transition:all .35s;
+  }
+  nav .brand{font-family:'Fraunces';font-weight:500;font-size:1.15rem;letter-spacing:.3px;color:#fff;text-decoration:none;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+  nav .brand span{color:var(--sky-soft)}
+  nav ul{display:flex;gap:30px;list-style:none}
+  nav ul a{
+    text-decoration:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+    color:#fff;font-weight:500;position:relative;padding:4px 0;transition:color .25s;text-shadow:0 2px 12px rgba(0,0,0,.45);
+  }
+  nav ul a::after{content:'';position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--sky-soft);transition:width .3s}
+  nav ul a:hover::after{width:100%}
+  nav.scrolled{background:rgba(247,240,227,.9);backdrop-filter:blur(12px);padding:13px 30px;border-bottom:1px solid var(--line)}
+  nav.scrolled .brand{color:var(--ink);text-shadow:none}
+  nav.scrolled .brand span{color:var(--tan-deep)}
+  nav.scrolled ul a{color:var(--muted);text-shadow:none}
+  nav.scrolled ul a:hover{color:var(--ink)}
+  .menu-btn{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+  nav.scrolled .menu-btn{color:var(--ink);text-shadow:none}
+  @media(max-width:760px){
+    nav ul{display:none}
+    nav ul.open{
+      display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+      background:var(--paper);padding:22px 30px;gap:18px;border-bottom:1px solid var(--line);
+    }
+    nav ul.open a{color:var(--muted);text-shadow:none}
+    .menu-btn{display:block}
+  }
+
+  /* ---- FULL-SCREEN HERO ---- */
+  header.hero{
+    position:relative;height:100vh;min-height:600px;width:100%;
+    display:flex;align-items:flex-end;justify-content:flex-start;text-align:left;overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('colleen_reeves_hero.png');
+    background-size:cover;background-position:center 22%;
+    transform:scale(1.08);animation:slowZoom 18s ease-out forwards;
+  }
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(31,46,66,.42) 0%, rgba(31,46,66,0) 22%, rgba(31,46,66,0) 45%, rgba(28,30,38,.55) 78%, rgba(28,30,38,.9) 100%),
+      linear-gradient(90deg, rgba(28,30,38,.6) 0%, rgba(28,30,38,.15) 38%, rgba(28,30,38,0) 65%);
+  }
+  .hero-content{position:relative;z-index:3;color:#fff;padding:0 28px 140px;max-width:840px;margin:0 auto;width:100%}
+  .hero-eyebrow{
+    font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600;
+    color:#fff;margin-bottom:18px;text-shadow:0 2px 16px rgba(0,0,0,.7);
+    opacity:0;animation:rise .9s .2s forwards;
+  }
+  .hero-content h1{
+    font-size:clamp(3rem,8.5vw,6.2rem);font-weight:400;line-height:.92;letter-spacing:-.02em;
+    text-shadow:0 4px 30px rgba(0,0,0,.6);
+  }
+  .hero-content h1 .hi{display:block;font-size:.26em;font-style:italic;font-weight:300;letter-spacing:.02em;margin-bottom:10px;opacity:.95}
+  .hero-content h1 .word{display:inline-block;opacity:0;animation:rise 1s forwards}
+  .hero-tag{
+    margin:26px 0 0;max-width:38ch;font-size:clamp(1.05rem,2vw,1.28rem);font-weight:300;
+    text-shadow:0 2px 18px rgba(0,0,0,.7);opacity:0;animation:rise .9s .85s forwards;
+  }
+  .hero-cta{margin-top:36px;opacity:0;animation:rise .9s 1s forwards}
+  .scroll-cue{
+    position:absolute;bottom:26px;right:34px;z-index:3;color:#fff;
+    font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;opacity:.8;text-align:center;
+    animation:bob 2.4s ease-in-out infinite;text-shadow:0 2px 12px rgba(0,0,0,.6);
+  }
+  .scroll-cue .arrow{display:block;margin:8px auto 0;width:1px;height:30px;background:linear-gradient(#fff,transparent)}
+
+  .btn{
+    display:inline-block;text-decoration:none;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:600;padding:15px 34px;border-radius:50px;background:var(--sky-deep);color:#fff;
+    transition:transform .25s,box-shadow .25s,background .25s;box-shadow:0 12px 34px -12px rgba(0,0,0,.55);
+  }
+  .btn:hover{transform:translateY(-3px);background:var(--sky)}
+  .btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.85);box-shadow:none;margin-left:12px}
+  .btn.ghost:hover{background:#fff;color:var(--sky-deep)}
+
+  /* ---- SECTION SHELL ---- */
+  section{padding:110px 0;position:relative}
+  .sec-label{
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--tan-deep);
+    font-weight:600;display:flex;align-items:center;gap:14px;margin-bottom:18px;
+  }
+  .sec-label::before{content:'';width:36px;height:1px;background:var(--tan-deep)}
+  h2.sec-title{font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:400;letter-spacing:-.02em;line-height:1.05;margin-bottom:38px}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---- ABOUT ---- */
+  #about{background:var(--cloud)}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start}
+  .about-grid p{margin-bottom:22px;font-size:1.06rem;color:#54493a;font-weight:300}
+  .skills{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .skill{font-size:.85rem;font-weight:500;padding:9px 18px;border-radius:50px;background:var(--paper-2);border:1px solid var(--line)}
+  .skill b{color:var(--tan-deep)}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:30px}}
+
+  /* ---- EXPERIENCE ---- */
+  .timeline{position:relative;margin-top:10px}
+  .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--sky),var(--tan))}
+  .job{position:relative;padding:0 0 42px 44px}
+  .job::before{content:'';position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--sky);transition:.3s}
+  .job:hover::before{background:var(--tan);border-color:var(--tan);transform:scale(1.2)}
+  .job .co{font-family:'Fraunces';font-size:1.3rem;font-weight:500}
+  .job .role{font-weight:500;color:var(--sky-deep);margin-top:2px}
+  .job .meta{font-size:.85rem;color:var(--muted);letter-spacing:.04em;margin-top:3px}
+  .job.lead .co{color:var(--tan-deep)}
+
+  /* ---- VOLUNTEER ---- */
+  #volunteer{background:linear-gradient(180deg,var(--paper-2),var(--paper))}
+  .vol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:10px}
+  .vcard{background:var(--cloud);border:1px solid var(--line);border-radius:14px;padding:30px 28px;transition:.35s;display:flex;flex-direction:column}
+  .vcard:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(58,52,43,.4)}
+  .vcard .vimg{width:calc(100% + 56px);margin:-30px -28px 22px;height:200px;object-fit:cover;object-position:center 30%;border-radius:14px 14px 0 0;display:block}
+  .vcard h3{font-size:1.35rem;font-weight:500;margin-bottom:4px}
+  .vcard a.site{font-size:.82rem;color:var(--sky-deep);text-decoration:none;letter-spacing:.03em;word-break:break-word}
+  .vcard a.site:hover{text-decoration:underline}
+  .vrole{margin-top:18px;font-size:.95rem}
+  .vrole .t{font-weight:600}
+  .vrole .y{color:var(--muted);font-size:.85rem}
+  .vrole + .vrole{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+  .vrole .note{font-size:.88rem;color:#5e5343;font-weight:300;margin-top:5px}
+  @media(max-width:880px){.vol-grid{grid-template-columns:1fr}}
+
+  /* ---- MORE / QUOTE ---- */
+  .more-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .more-grid p{font-size:1.1rem;font-weight:300;color:#54493a;margin-bottom:18px}
+  .interests{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .interests span{font-size:.85rem;padding:7px 15px;border-radius:50px;border:1px solid var(--line);background:var(--cloud)}
+  .interests span.blue{background:var(--sky-deep);color:#fff;border-color:var(--sky-deep);font-weight:500}
+  .more-grid img{width:100%;border-radius:8px 80px 8px 8px;box-shadow:0 26px 55px -25px rgba(58,52,43,.45)}
+  .quote{background:linear-gradient(120deg,var(--sky-deep),var(--sky));color:#fff;border-radius:18px;padding:64px 56px;margin-top:90px;position:relative;overflow:hidden}
+  .quote::before{content:'\201C';font-family:'Fraunces';position:absolute;top:-30px;left:24px;font-size:11rem;color:rgba(255,255,255,.16)}
+  .quote p{font-family:'Fraunces';font-size:clamp(1.4rem,2.8vw,2rem);font-weight:400;font-style:italic;line-height:1.4;position:relative;z-index:2;max-width:48ch}
+  .quote cite{display:block;margin-top:24px;font-family:'Outfit';font-style:normal;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:600}
+  @media(max-width:760px){.more-grid{grid-template-columns:1fr;gap:36px}.quote{padding:44px 30px}}
+
+  /* ---- CONTACT ---- */
+  #contact{background:var(--cloud)}
+  .contact-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:start}
+  .contact-wrap .lead p{font-size:1.08rem;font-weight:300;color:#54493a}
+  .form-frame{width:100%;border:1px solid var(--line);border-radius:14px;background:var(--paper);min-height:760px}
+  .form-frame iframe{width:100%;min-height:760px;border:0;border-radius:14px}
+  @media(max-width:760px){.contact-wrap{grid-template-columns:1fr;gap:30px}}
+
+  footer{background:var(--ink);color:#d8cdba;text-align:center;padding:46px 28px;font-size:.85rem;letter-spacing:.04em}
+  footer .fbrand{font-family:'Fraunces';font-size:1.25rem;color:#fff;display:block;margin-bottom:8px}
+
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes slowZoom{to{transform:scale(1)}}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  @media(prefers-reduced-motion:reduce){.hero-bg{animation:none;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#top">Colleen<span>.</span>Reeves</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+  <ul id="navlist">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#volunteer">Volunteering</a></li>
+    <li><a href="#more">More</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Global Business Planning &amp; Development Fortune 500 Executive</div>
+    <h1>
+      <span class="hi">Hi, I'm</span>
+      <span class="word" style="animation-delay:.35s">Colleen</span> <span class="word" style="animation-delay:.55s">Reeves.</span>
+    </h1>
+    <p class="hero-tag">Chasing blue skies and marketplace success.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#about">About Me</a>
+      <a class="btn ghost" href="#contact">Get in Touch</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll<span class="arrow"></span></div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-label reveal">About Me</div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>As an energetic beauty brand business planning and development executive, I develop strategies that unlock marketplace success. I am recognized for developing insightful strategies that are rooted in deep consumer trends, flawlessly executed, and able to reap winning results.</p>
+        <p>Leveraging my experience in strategy and new product launch planning, and sales development, I efficiently assess business conditions and apply past proven best practices. In my next role, I will leverage my passion and skills as a senior business development team member driving superior performance, applying my leadership at both strategic and operational levels to create new growth opportunities.</p>
+        <div class="skills">
+          <span class="skill"><b>Business Planning</b></span>
+          <span class="skill"><b>Brand Management</b></span>
+          <span class="skill"><b>Project Management</b></span>
+        </div>
+      </div>
+      <div class="reveal">
+        <p>Over the past few years, I have been consulting for my consulting firm, Blue Skies Consulting, Colleen M. Reeves, LLC. I am energetic, kind, and dedicated, working well in a team-driven environment.</p>
+        <p>For the past 20 years, I have spent my career at Fortune 500 companies in various executive planning roles and have contributed to several highly profitable eCommerce brands. I enjoy spending my spare time volunteering at non-profits such as Vetwork, of which I am now the Executive Board Treasurer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-label reveal">Experience</div>
+    <div class="timeline">
+      <div class="job lead reveal">
+        <div class="co">Blue Skies Consulting — Colleen M. Reeves, LLC</div>
+        <div class="role">Founder</div>
+        <div class="meta">New York, NY · 2018 – Present</div>
+      </div>
+      <div class="job reveal">
+        <div class="co">La Perla Beauty</div>
+        <div class="role">Account Management Consultant</div>
+        <div class="meta">New York, NY</div>
+      </div>
+      <div class="job reveal">
+        <div class="co">Scentbird</div>
+        <div class="role">Business Development Consultant</div>
+        <div class="meta">New York, NY</div>
+      </div>
+      <div class="job reveal">
+        <div class="co">Estée Lauder Companies, Inc.</div>
+        <div class="role">Executive Director, Global Brand Planning – ELC Online</div>
+        <div class="meta">New York, NY · 2018</div>
+      </div>
+      <div class="job reveal">
+        <div class="co">Estée Lauder Companies, Inc.</div>
+        <div class="role">Director, North America Brand Planning – ELC Online</div>
+        <div class="meta">New York, NY</div>
+      </div>
+      <div class="job reveal">
+        <div class="co">Estée Lauder Companies, Inc.</div>
+        <div class="role">Director, North America Sales Operations – ADF</div>
+        <div class="meta">New York, NY · 2004</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="volunteer">
+  <div class="wrap">
+    <div class="sec-label reveal">Volunteering</div>
+    <div class="vol-grid">
+      <div class="vcard reveal">
+        <img class="vimg" src="volunteer.jpg" alt="Vetwork volunteering">
+        <h3>Vetwork</h3>
+        <a class="site" href="http://vetwork.org" target="_blank" rel="noopener">vetwork.org</a>
+        <div class="vrole"><div class="t">Executive Board Treasurer</div><div class="y">2023 – Present</div></div>
+        <div class="vrole"><div class="t">Board of Trustees; Fundraising</div><div class="y">2022 – 2023</div></div>
+        <div class="vrole"><div class="t">Outreach Volunteer</div><div class="y">2007 – 2022</div></div>
+      </div>
+      <div class="vcard reveal">
+        <img class="vimg" src="volunteer2.jpg" alt="Sant' Egidio volunteering">
+        <h3>Sant' Egidio: Friends on the Street</h3>
+        <a class="site" href="http://santegidiousa.org/friends-on-the-street/" target="_blank" rel="noopener">santegidiousa.org/friends-on-the-street</a>
+        <div class="vrole">
+          <div class="t">Volunteer</div><div class="y">2020 – 2022</div>
+          <div class="note">Traveled on a volunteer trip to Italy to meet a group from Sant' Egidio. Serve meals to the homeless in NYC.</div>
+        </div>
+      </div>
+      <div class="vcard reveal">
+        <h3>St. Catharine – St. Margaret Parish</h3>
+        <a class="site" href="https://scsmsl.org/" target="_blank" rel="noopener">scsmsl.org</a>
+        <div class="vrole"><div class="t">Eucharistic Minister</div><div class="y">2017 – Present</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="more">
+  <div class="wrap">
+    <div class="sec-label reveal">More About Me</div>
+    <div class="more-grid">
+      <div class="reveal">
+        <p>I have a twin sister, Maureen, and three wonderful nephews who I love spending time with.</p>
+        <p>When I'm not working, you'll find me chasing blue skies and staying active.</p>
+        <div class="interests">
+          <span>Running</span><span>HIIT Workouts</span><span>The Beach</span><span>Sailing</span>
+          <span class="blue">Blue Skies</span><span>Paddleboarding</span><span>Hiking</span><span>Gardening</span><span>Volunteering</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="about_me.jpg" alt="Colleen enjoying the outdoors">
+      </div>
+    </div>
+    <div class="quote reveal">
+      <p>To me, leadership is about encouraging people. It's about stimulating them. It's about enabling them to achieve what they can achieve — and to do that with a purpose.</p>
+      <cite>~ Christine Lagarde</cite>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-label reveal">Contact</div>
+    <div class="contact-wrap">
+      <div class="lead reveal">
+        <p>Have an opportunity or want to say hello? Drop me a note and I'll be in touch.</p>
+      </div>
+      <div class="form-frame reveal">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfQd_yqkukirRmzYnoInMmf660WZ4rkrxdlP5dyAeWl380Nyg/viewform?embedded=true" loading="lazy">Loading…</iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="fbrand">Colleen Reeves</span>
+  Copyright © 2026 Colleen Reeves
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+  document.getElementById('menuBtn').onclick=()=>document.getElementById('navlist').classList.toggle('open');
+  document.querySelectorAll('#navlist a').forEach(a=>a.onclick=()=>document.getElementById('navlist').classList.remove('open'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*.08)+'s';io.observe(el)});
+</script>
+</body>
+</html>
